@@ -19,3 +19,6 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## Tests
 Documentation about running the End to End test can be found under the `/tests` directory
+
+##
+An OPENAI_API_KEY env variable is now required. Refer to openai.com for login and generation of this key.
