@@ -5,6 +5,7 @@ var Comment = mongoose.model("Comment");
 var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
+var placeHolderImage = require("../../../frontend/public/placeholder.png")
 
 // Preload item objects on routes with ':item'
 router.param("item", function(req, res, next, slug) {
@@ -128,6 +129,9 @@ router.get("/feed", auth.required, function(req, res, next) {
 
         return res.json({
           items: items.map(function(item) {
+            if (!item.image) {
+              item.image = placeHolderImage
+            }
             return item.toJSONFor(user);
           }),
           itemsCount: itemsCount
