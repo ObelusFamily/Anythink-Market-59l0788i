@@ -128,6 +128,9 @@ router.get("/feed", auth.required, function(req, res, next) {
 
         return res.json({
           items: items.map(function(item) {
+            if (!item.image) {
+              item.image = '/placeholder.png'
+            }
             return item.toJSONFor(user);
           }),
           itemsCount: itemsCount
